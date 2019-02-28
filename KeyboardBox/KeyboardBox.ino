@@ -1,9 +1,9 @@
 #include "Keyboard.h"
 
 // change this to match your platform:
-int platform = WINDOWS;
 
-void setup() {
+void setup() 
+{
   // make pin 2 an input and turn on the pull-up resistor so it goes high unless
   // connected to ground:
   pinMode(2, INPUT_PULLUP);
@@ -12,34 +12,34 @@ void setup() {
   Keyboard.begin();
 }
 
-void loop() {
-  if (digitalRead(2) == HIGH) 
+void loop() 
+{
+  while (digitalRead(2) == LOW) 
   {
-    // do nothing until pin 2 goes low
-      delay(500);
-      Keyboard.press(KEY_LEFT_GUI);
-      Keyboard.press("l");
-      delay(100);
-      Keyboard.releaseAll();
+  delay(200);
+  Keyboard.press(KEY_LEFT_GUI);
+  Keyboard.write('l');
+  delay(100);
+  Keyboard.releaseAll();
+  delay(200);
+  break;
   }
-  else if (digitalRead(3) == HIGH) 
+    while (digitalRead(3) == LOW) 
   {
-      // do nothing until pin 3 goes low
-      delay(500);
-    // Enter:
-      Keyboard.press(KEY_RETURN);
-      delay(100);
-      Keyboard.releaseAll();
+  delay(200);
+  Keyboard.press(KEY_UP_ARROW);
+  delay(100);
+  Keyboard.releaseAll();
+  delay(200);
+  break;
   }
-  else if (digitalRead(4) == HIGH) 
+    while (digitalRead(4) == LOW) 
   {
-      // do nothing until pin 2 goes low
-      delay(500);
-      // DELETE:
-      Keyboard.press(KEY_DELETE);
-      delay(100);
-      Keyboard.releaseAll();
+  delay(200);
+  Keyboard.press(KEY_DOWN_ARROW);
+  delay(100);
+  Keyboard.releaseAll();
+  delay(200);
+  break;
   }
-  // do nothing:
-  while (true);
 }
